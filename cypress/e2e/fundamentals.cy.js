@@ -7,7 +7,7 @@ describe("Fundamentals spec", () => {
       "Testing Fundamentals"
     );
   });
-  it("Accordion works", () => {
+  it.only("Accordion works", () => {
     cy.visit("/fundamentals");
     cy.contains("Your tests will exist in a describe block.").should(
       "not.be.visible"
