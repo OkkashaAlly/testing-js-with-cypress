@@ -18,6 +18,22 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+
+## Running Test
+
+Install Cypress as dev dependency:
+
+```bash
+npm install cypress --save-dev
+# or
+yarn add cypress -D
+```
+Run test environment(runner):
+
+```bash
+npx cypress open
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
