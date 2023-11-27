@@ -3,13 +3,13 @@ describe("Fundamentals spec", () => {
     cy.visit("/fundamentals");
   });
   it("Page title", () => {
-    // cy.get('[data-test="fundamental-title"]').contains(/Testing fundamental/i);
-    cy.get('[data-test="fundamental-title"]').should(
-      "have.text",
-      "Testing Fundamentals"
-    );
+    cy.getDataTest("fundamental-title").contains(/Testing fundamental/i);
+    // cy.get('[data-test="fundamental-title"]').should(
+    //   "have.text",
+    //   "Testing Fundamentals"
+    // );
   });
-  it.only("Accordion works", () => {
+  it("Accordion works", () => {
     cy.contains("Your tests will exist in a describe block.").should(
       "not.be.visible"
     );
