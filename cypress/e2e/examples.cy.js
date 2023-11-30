@@ -18,4 +18,11 @@ describe("Various Examples", () => {
     cy.getDataTest("nav-examples").click();
     cy.location("pathname").should("equal", "/examples");
   });
+  it.only("intercept request", () => {
+    cy.intercept("POST", "http://localhost:3000/examples", {
+      body: { message: "Successfully intercepted" },
+    });
+    cy.wait(3000);
+    cy.getDataTest("post-btn").click();
+  });
 });
