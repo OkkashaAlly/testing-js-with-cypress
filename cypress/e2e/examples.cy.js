@@ -2,6 +2,7 @@ describe("Various Examples", () => {
   beforeEach(() => {
     cy.visit("/examples");
   });
+
   it("multi-page testing", () => {
     cy.getDataTest("nav-why-cypress").click();
     cy.location("pathname").should("equal", "/");
@@ -18,6 +19,7 @@ describe("Various Examples", () => {
     cy.getDataTest("nav-examples").click();
     cy.location("pathname").should("equal", "/examples");
   });
+
   it("intercept request", () => {
     cy.intercept("POST", "http://localhost:3000/examples", {
       fixture: "example.json",
@@ -25,7 +27,11 @@ describe("Various Examples", () => {
     cy.wait(3000);
     cy.getDataTest("post-btn").click();
   });
+
   it.only("grudge list work", () => {
+
+    cy.getDataTest("clear-grudges-btn").should("not.exist");
+
     cy.wait(3000);
     cy.contains(/add some grudge/i);
 
@@ -64,6 +70,12 @@ describe("Various Examples", () => {
 
     cy.getDataTest("grudge-list").within(() => {
       cy.get("li").should("have.length", 1);
+    });
+
+    cy.getDataTest("clear-grudges-btn").click();
+
+    cy.getDataTest("grudge-list").within(() => {
+      cy.get("li").should("have.length", 0);
     });
   });
 });
